@@ -24,6 +24,8 @@ class Ball(Turtle):
 
     def reset(self):
         self.goto(0,0)
-        self.bounce_x()
-        self.move_x = 10
+        if self.move_x<0:
+            self.move_x = 10
+        else:
+            self.move_x = -10
         self.move_y = 10
