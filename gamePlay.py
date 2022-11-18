@@ -1,6 +1,7 @@
 from paddle import Paddle
 from time import sleep
 from ball import Ball
+from scoreboard import Scoreboard
 
 
 def start_game(screen):
@@ -8,6 +9,7 @@ def start_game(screen):
     r_paddle = Paddle()
     l_paddle = Paddle(right_paddle=False)
     ball = Ball()
+    scoreboard = Scoreboard()
     while game_is_on:
         sleep(0.1)
         screen.listen()
@@ -21,8 +23,10 @@ def start_game(screen):
         if (ball.xcor() > 320 or ball.xcor() < -320) and (ball.distance(r_paddle) < 50 or ball.distance(l_paddle) < 50):
             ball.bounce_x()
         elif ball.xcor() > 340:
+            scoreboard.l_point()
             ball.reset()
         elif ball.xcor() < -340:
+            scoreboard.r_point()
             ball.reset()
 
         screen.update()
