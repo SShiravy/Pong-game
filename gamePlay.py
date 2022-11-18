@@ -22,6 +22,7 @@ def start_game(screen):
             ball.bounce_y()
         if (ball.xcor() > 320 or ball.xcor() < -320) and (ball.distance(r_paddle) < 50 or ball.distance(l_paddle) < 50):
             ball.bounce_x()
+            ball.increase_speed()
         elif ball.xcor() > 340:
             scoreboard.l_point()
             ball.reset()
